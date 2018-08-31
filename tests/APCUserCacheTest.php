@@ -1,6 +1,6 @@
 <?php
 
-namespace Amco\Cache;
+namespace APCu\Cache;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;

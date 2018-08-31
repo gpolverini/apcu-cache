@@ -1,6 +1,6 @@
 <?php
 
-namespace Amco\Cache;
+namespace APCu\Cache;
 
 class InvalidArgumentException extends \Exception implements \Psr\SimpleCache\InvalidArgumentException
 {

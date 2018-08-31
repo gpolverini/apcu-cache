@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Amco\\Cache\\": "src/"
+      "APCu\\Cache\\": "src/"
     }
   },
   "authors": [
