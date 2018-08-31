@@ -1,0 +1,32 @@
+language: php
+
+php:
+  - 7.0
+  - 7.0snapshot
+  - 7.1
+  - 7.1snapshot
+  - 7.2
+  - 7.2snapshot
+  - master
+
+sudo: false
+
+before_install:
+  - composer self-update
+  - composer clear-cache
+  - if [[ "$(php -v | grep 'PHP 7')" ]]; then yes | pecl install -f apcu; fi
+  - echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "apc.enable_cli=1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+
+install:
+  - travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable
+
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit
+
+after_success:
+  - travis_retry php vendor/bin/coveralls
+
+notifications:
+  email: false

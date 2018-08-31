@@ -1,0 +1,6 @@
+composer.lock
+vendor/
+build/coverage
+build/logs
+build/testdox.html
+/.idea
