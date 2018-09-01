@@ -21,7 +21,9 @@
   "authors": [
     {
       "name": "Gabriel Polverini",
-      "email": "polverini.gabriel@gmail.com"
+      "email": "polverini.gabriel@gmail.com",
+      "homepage": "https://github.com/gpolverini",
+      "role": "Developer"
     }
   ],
   "support": {

@@ -39,7 +39,7 @@ class APCUserCacheTest extends TestCase
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $key = [];
+        $key = Array();
         try {
             $cache->get($key);
         } catch (\Exception $ex) {
@@ -88,7 +88,7 @@ class APCUserCacheTest extends TestCase
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $key = [];
+        $key = Array();
         try {
             $cache->set($key, $value);
         } catch (\Exception $ex) {
@@ -176,7 +176,9 @@ class APCUserCacheTest extends TestCase
      */
     public function testClear()
     {
-        $this->assertTrue((new APCUserCache())->clear());
+        $cache = new APCUserCache();
+
+        $this->assertTrue($cache->clear());
     }
 
     /**
@@ -202,7 +204,7 @@ class APCUserCacheTest extends TestCase
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $key = [1];
+        $key = Array(1);
         try {
             $cache->getMultiple($key);
         } catch (\Exception $ex) {
@@ -221,7 +223,7 @@ class APCUserCacheTest extends TestCase
         $key_test_1 = 'key_test_1';
         $key_test_2 = 'key_test_2';
         $default = 'default_test';
-        $keys = [$key_test_1, $key_test_2];
+        $keys = Array($key_test_1, $key_test_2);
         $ret = $cache->getMultiple($keys, $default);
         $this->assertTrue(is_array($ret) && count($ret) == count($keys));
         $this->assertTrue(
@@ -261,14 +263,14 @@ class APCUserCacheTest extends TestCase
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $values = [1 => ''];
+        $values = Array(1 => '');
         try {
             $cache->setMultiple($values);
         } catch (\Exception $ex) {
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $values = ['key_test' => 'value_test'];
+        $values = Array('key_test' => 'value_test');
         try {
             $cache->setMultiple($values, new \StdClass());
         } catch (\Exception $ex) {
@@ -288,10 +290,10 @@ class APCUserCacheTest extends TestCase
         $key_test_1 = 'key_test_1';
         $key_test_2 = 'key_test_2';
         $default = 'default_test';
-        $values = [
+        $values = Array(
             $key_test_1 => $default,
             $key_test_2 => $default
-        ];
+        );
         $this->assertTrue($cache->setMultiple($values));
         $ttl = 5;
         $this->assertTrue($cache->setMultiple($values, $ttl));
@@ -322,7 +324,7 @@ class APCUserCacheTest extends TestCase
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $keys = [1];
+        $keys = Array(1);
         try {
             $cache->deleteMultiple($keys);
         } catch (\Exception $ex) {
@@ -340,7 +342,7 @@ class APCUserCacheTest extends TestCase
         $cache = new APCUserCache();
         $key_test_1 = 'key_test_1';
         $key_test_2 = 'key_test_2';
-        $keys = [$key_test_1, $key_test_2];
+        $keys = Array($key_test_1, $key_test_2);
         $this->assertTrue($cache->deleteMultiple($keys));
     }
 
@@ -367,7 +369,7 @@ class APCUserCacheTest extends TestCase
             $this->assertTrue($ex instanceof \Psr\SimpleCache\InvalidArgumentException);
         }
 
-        $key = [];
+        $key = Array();
         try {
             $cache->has($key);
         } catch (\Exception $ex) {
